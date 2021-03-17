@@ -1,3 +1,4 @@
+<!--
 <table class="table">
   <thead>
     <tr>
@@ -19,4 +20,30 @@
       <td>{{car.modelYear}}</td>
     </tr>
   </tbody>
-</table>
+</table> -->
+
+
+
+
+<div class="row" *ngIf="dataLoaded==true">
+  <div *ngFor="let car of cars" class="card" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title d-flex justify-content-center">{{car.name}}</h5>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">Brand: {{car.brandName}}</li>
+      <li class="list-group-item">Color: {{car.colorName}}</li>
+      <li class="list-group-item">Model Year: {{car.modelYear}}</li>
+      <li class="list-group-item">Daily Price: {{car.dailyPrice}}</li>
+    </ul>
+    <div class="card-body">
+      <section style="float:left">
+          <button routerLink="/car/details/{{car.id}}" type="button" class="btn btn-primary">Details</button>
+        </section>
+        <section style="float: right">
+          <button type="button" class="btn btn-primary">Rent</button>
+        </section>
+  </div>
+  </div>
+
+</div>
