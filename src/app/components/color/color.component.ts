@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Color } from 'src/app/models/color';
+import { Filters } from 'src/app/models/filterts';
 import { ColorService } from 'src/app/services/color.service';
 
 @Component({
@@ -12,6 +13,9 @@ export class ColorComponent implements OnInit {
   colors:Color[]=[];
   dataLoaded = false;
   currentColor : Color;
+  allColor?: Color
+  filterText ="";
+  Filters = { brandId: '', colorId: '' };
   constructor(private colorService:ColorService) { }
 
   ngOnInit(): void {
@@ -23,10 +27,6 @@ export class ColorComponent implements OnInit {
       this.colors = response.data;
       this.dataLoaded = true;
     })
-  }
-
-  setCurrentColor(color:Color){
-    this.currentColor = color;
   }
 
   getCurrentColorClass(color:Color){
@@ -43,6 +43,15 @@ export class ColorComponent implements OnInit {
     }else{
       return "list-group-item"
     }
+  }
+
+  setCurrentColor() {
+    this.currentColor !== undefined
+      ? (Filters.colorId = this.currentColor.id.toString())
+      : (Filters.colorId = '');
+  }
+  allColorsSelected() {
+    return this.currentColor == undefined ? true : false;
   }
 
 }

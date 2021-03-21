@@ -1,70 +1,50 @@
-<div class="col-lg-7 mx-auto">
-  <div id="carImageSlide" class="carousel slide" data-bs-ride="carousel">
-    <div
-      class="carousel-inner d-flex"
-      style="height: 50vh; min-height: 20rem; max-height: 30rem"
-    >
-      <div
-        *ngFor="let image of carImages; index as i; first as firstImage"
-        class="carousel-item align-self-center"
-        [ngClass]="{ active: firstImage }"
-        style="height: 100%; width: 100%"
-      >
-        <img
-          [src]="imageBasePath + image.imagePath"
-          class=""
-          style="height: 100%; width: 100%; object-fit: contain"
-          [alt]="image.imagePath"
-        />
+<div class="card" *ngIf="dataLoaded==true">
+  <div class="card-header text-center">
+      <strong *ngIf="carDetail">
+          {{carDetail.car.brandName}} - {{carDetail.car.modelYear}}
+      </strong>
+  </div>
+  <div class="card-body">
+      <div class="d-grid gap-2 mb-2" *ngIf="carDetail">
+          <app-rental [car]="carDetail.car"></app-rental>
       </div>
-
-      <button
-        class="carousel-control-prev"
-        type="button"
-        data-bs-target="#carImageSlide"
-        data-bs-slide="prev"
-      >
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button
-        class="carousel-control-next"
-        type="button"
-        data-bs-target="#carImageSlide"
-        data-bs-slide="next"
-      >
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
-    </div>
-
-    <table *ngFor="let car of cars" class="table table-striped mt-2">
-      <tbody>
-        <tr>
-          <th scope="row">Marka</th>
-          <td>{{ car.brandName}}</td>
-        </tr>
-        <tr>
-          <th scope="row">Model</th>
-          <td>{{ car.name }}</td>
-        </tr>
-        <tr>
-          <th scope="row">Renk</th>
-          <td>{{ car.colorName }}</td>
-        </tr>
-        <tr>
-          <th scope="row">Fiyat</th>
-          <td>
-            {{
-              car.dailyPrice | currency: "TRY":"symbol-narrow":"1.2-2"
-            }}
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">Model Yılı</th>
-          <td>{{ car.modelYear }}</td>
-        </tr>
-      </tbody>
-    </table>
+      <div class="d-grid gap-2 mb-2" *ngIf="carDetail.car.status == false">
+          <div class="alert alert-danger">Araç şuan kiralanamaz</div>
+      </div>
+      <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div *ngFor="let image of carDetail.carImages let i = index" [ngClass]="getSliderClassName(i)">
+              <img src="{{imageBasePath}}/{{image.imagePath}}" class="d-block w-100" width="800" height="400" alt="...">
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"  data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"  data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+      </div>
+     <table class="table">
+         <thead>
+             <tr>
+                 <th>Araç Kodu</th>
+                 <th>Marka</th>
+                 <th>Renk</th>
+                 <th>Model</th>
+                 <th>Günlük Ücret</th>
+             </tr>
+         </thead>
+         <tbody>
+             <tr>
+                 <td>{{carDetail.car.id}}</td>
+                 <td>{{carDetail.car.brandName}}</td>
+                 <td>{{carDetail.car.colorName}}</td>
+                 <td>{{carDetail.car.modelYear}}</td>
+                 <td>{{carDetail.car.dailyPrice | currency:"₺"}}</td>
+             </tr>
+         </tbody>
+     </table>
   </div>
 </div>

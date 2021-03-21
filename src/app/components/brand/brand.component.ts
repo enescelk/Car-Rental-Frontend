@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Brand } from 'src/app/models/brand';
+import { Filters } from 'src/app/models/filterts';
 import { BrandService } from 'src/app/services/brand.service';
 @Component({
   selector: 'app-brand',
@@ -10,7 +11,10 @@ export class BrandComponent implements OnInit {
 
   brand:Brand[] = [];
   currentBrand: Brand;
+  allBrand?: Brand;
   dataLoaded = false;
+  filterText ="";
+  Filters = {brandId: '', colorId: ''};
   constructor(private brandService:BrandService) { }
 
   ngOnInit(): void {
@@ -25,11 +29,6 @@ export class BrandComponent implements OnInit {
       console.log(this.dataLoaded = true);
     })
   }
-
-  setCurrentBrand(brand:Brand){
-    this.currentBrand = brand;
-  }
-
   getCurrentBrandClass(brand:Brand){
     if(brand==this.currentBrand){
       return "list-group-item active"
@@ -44,6 +43,16 @@ export class BrandComponent implements OnInit {
     }else{
       return "list-group-item"
     }
+  }
+
+  setCurrentBrand() {
+    this.currentBrand !== undefined
+      ? (Filters.brandId = this.currentBrand.id.toString())
+      : (Filters.brandId = '');
+  }
+
+  allBrandSelected() {
+    return this.currentBrand == undefined ? true : false;
   }
 
 }

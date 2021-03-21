@@ -23,10 +23,15 @@
 </table> -->
 
 
-
-
+<div class="mb-3">
+  <label for="exampleFormControlInput1" class="form-label">Search</label>
+  <input type="email" class="form-control" [(ngModel)]="filterText" id="filterText" placeholder="Arama yapiniz">
+</div>
+<div *ngIf="filterText" class="alert alert-primary">
+  {{filterText}} Aradiniz ..
+</div>
 <div class="row" *ngIf="dataLoaded==true">
-  <div *ngFor="let car of cars" class="card" style="width: 18rem;">
+  <div *ngFor="let car of cars | filterPipe:filterText " class="card" style="width: 18rem;">
     <div class="card-body">
       <h5 class="card-title d-flex justify-content-center">{{car.name}}</h5>
     </div>
@@ -38,10 +43,10 @@
     </ul>
     <div class="card-body">
       <section style="float:left">
-          <button routerLink="/car/details/{{car.id}}" type="button" class="btn btn-primary">Details</button>
+          <button routerLink="/cars/car-detail/{{car.id}}" type="button" class="btn btn-primary">{{car.id}}</button>
         </section>
         <section style="float: right">
-          <button type="button" class="btn btn-primary">Rent</button>
+          <button routerLink="/rentals/{{car.id}}" type="button" class="btn btn-primary">Rent</button>
         </section>
   </div>
   </div>

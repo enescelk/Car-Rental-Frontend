@@ -1,9 +1,13 @@
-<ul class="list-group">
-  <h3 style="text-align: center;">Colors</h3>
-  <hr>
-  <li [class]="getAllColorClass()" routerLink="/cars">Tum Renkler</li>
-  <li *ngFor="let color of colors"
-  (click)="setCurrentColor(color)"
-  [class] = "getCurrentColorClass(color)"
-  routerLink = "/cars/color/{{color.id}}">{{color.name}}</li>
-</ul>
+<select
+  [(ngModel)]="currentColor"
+  (change)="setCurrentColor()"
+  class="form-select mb-1"
+  aria-label="Default select example"
+>
+  <option [selected]="allColorsSelected()" [ngValue]="allColor">
+    Select a Color
+  </option>
+  <option *ngFor="let color of colors" [ngValue]="color">
+    {{ color.name }}
+  </option>
+</select>
