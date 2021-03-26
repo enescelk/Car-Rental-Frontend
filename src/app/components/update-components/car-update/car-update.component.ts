@@ -33,27 +33,25 @@ export class CarUpdateComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private carService: CarService,
-    private carDetailService:CarDetailService,
+    private carDetailService: CarDetailService,
     private colorService: ColorService,
     private brandService: BrandService,
     private toastrService: ToastrService,
-    private activatedRoute:ActivatedRoute
+    private activatedRoute: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
-    this.activatedRoute.params.subscribe(params => {
-      if(params["id"]){
-        this.getCarDetail(params["id"]);
+    this.activatedRoute.params.subscribe((params) => {
+      if (params['id']) {
+        this.getCarDetail(params['id']);
       }
-
-
     });
     this.getCars();
     this.getBrands();
     this.getColors();
   }
 
-  getCarDetail(carId:number) {
+  getCarDetail(carId: number) {
     this.carDetailService.getCarDetail(carId).subscribe((response) => {
       this.carDetail = response.data;
       console.log(response.data);
@@ -63,14 +61,14 @@ export class CarUpdateComponent implements OnInit {
 
   createCarUpdateForm() {
     this.carUpdateForm = this.formBuilder.group({
-      id:[{value:this.carDetail.car.id,disabled:true}],
-      name:[this.carDetail.car.name,Validators.required],
-      brandId:[this.carDetail.car.brandId,Validators.required],
-      colorId:[this.carDetail.car.colorId,Validators.required],
-      dailyPrice: [this.carDetail.car.dailyPrice,Validators.required],
-      modelYear:[this.carDetail.car.modelYear,Validators.required],
-      description:[this.carDetail.car.description,Validators.required]
-    })
+      id: [{ value: this.carDetail.car.id, disabled: true }],
+      name: [this.carDetail.car.name, Validators.required],
+      brandId: [this.carDetail.car.brandId, Validators.required],
+      colorId: [this.carDetail.car.colorId, Validators.required],
+      dailyPrice: [this.carDetail.car.dailyPrice, Validators.required],
+      modelYear: [this.carDetail.car.modelYear, Validators.required],
+      description: [this.carDetail.car.description, Validators.required],
+    });
   }
 
   getCars() {
@@ -102,11 +100,7 @@ export class CarUpdateComponent implements OnInit {
         },
         (responseError) => {
           if (responseError.error.ValidationErrors.length > 0) {
-            for (
-              let i = 0;
-              i < responseError.error.ValidationErrors.length;
-              i++
-            ) {
+            for (let i = 0;i < responseError.error.ValidationErrors.length; i++) {
               this.toastrService.error(
                 responseError.error.ValidationErrors[i].ErrorMessage,
                 'Doğrulama hatası'

@@ -9,7 +9,7 @@ import { BrandService } from 'src/app/services/brand.service';
 })
 export class BrandComponent implements OnInit {
 
-  brand:Brand[] = [];
+  brand:Brand[];
   currentBrand: Brand;
   allBrand?: Brand;
   dataLoaded = false;

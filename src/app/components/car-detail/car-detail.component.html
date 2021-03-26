@@ -33,6 +33,7 @@
                  <th>Marka</th>
                  <th>Renk</th>
                  <th>Model</th>
+                 <th>Aciklama</th>
                  <th>Fiyat</th>
              </tr>
          </thead>
@@ -42,7 +43,9 @@
                  <td>{{carDetail.car.brandName}}</td>
                  <td>{{carDetail.car.colorName}}</td>
                  <td>{{carDetail.car.modelYear}}</td>
+                 <td>{{carDetail.car.description}}</td>
                  <td>{{carDetail.car.dailyPrice | currency:"₺"}}</td>
+
              </tr>
          </tbody>
      </table>

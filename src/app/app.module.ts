@@ -21,9 +21,12 @@ import { CustomerComponent } from './components/customer/customer.component';
 import { CarAddComponent } from './components/add-components/car-add/car-add.component';
 import { BrandAddComponent } from './components/add-components/brand-add/brand-add.component';
 import { ColorAddComponent } from './components/add-components/color-add/color-add.component';
+import { BrandUpdateComponent } from './components/update-components/brand-update/brand-update.component';
 
 import { ToastrModule } from 'ngx-toastr';
 import { CarUpdateComponent } from './components/update-components/car-update/car-update.component';
+import { ColorUpdateComponent } from './components/update-components/color-update/color-update.component';
+
 
 
 
@@ -46,6 +49,8 @@ import { CarUpdateComponent } from './components/update-components/car-update/ca
     BrandAddComponent,
     ColorAddComponent,
     CarUpdateComponent,
+    BrandUpdateComponent,
+    ColorUpdateComponent,
   ],
   imports: [
     BrowserModule,
