@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -22,10 +22,14 @@ import { CarAddComponent } from './components/add-components/car-add/car-add.com
 import { BrandAddComponent } from './components/add-components/brand-add/brand-add.component';
 import { ColorAddComponent } from './components/add-components/color-add/color-add.component';
 import { BrandUpdateComponent } from './components/update-components/brand-update/brand-update.component';
-
-import { ToastrModule } from 'ngx-toastr';
 import { CarUpdateComponent } from './components/update-components/car-update/car-update.component';
 import { ColorUpdateComponent } from './components/update-components/color-update/color-update.component';
+import { LoginComponent } from './components/auth/login/login.component';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { RegisterComponent } from './components/auth/register/register.component';
+
+import { ToastrModule } from 'ngx-toastr';
+
 
 
 
@@ -51,6 +55,8 @@ import { ColorUpdateComponent } from './components/update-components/color-updat
     CarUpdateComponent,
     BrandUpdateComponent,
     ColorUpdateComponent,
+    LoginComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
@@ -63,7 +69,9 @@ import { ColorUpdateComponent } from './components/update-components/color-updat
       positionClass : "toast-bottom-right"
     })
   ],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass:AuthInterceptor, multi:true}
+    ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

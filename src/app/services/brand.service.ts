@@ -19,9 +19,9 @@ export class BrandService {
     return this.httpClient.get<ListResponseModel<Brand>>(newPath);
   }
 
-  getById(id:number):Observable<ListResponseModel<Brand>>{
-    let newPath = environment.apiUrl + "Brands/GetById?id"+id
-    return this.httpClient.get<ListResponseModel<Brand>>(newPath);
+  getById(id:number):Observable<ItemResponseModel<Brand>>{
+    let newPath = environment.apiUrl + "Brands/GetById?id="+id
+    return this.httpClient.get<ItemResponseModel<Brand>>(newPath);
   }
 
   add(brand:Brand):Observable<ResponseModel>{

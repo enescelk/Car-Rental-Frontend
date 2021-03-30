@@ -13,6 +13,7 @@ import { BrandService } from 'src/app/services/brand.service';
 export class BrandUpdateComponent implements OnInit {
 
   brand:Brand;
+  brands:Brand[] = [];
   brandUpdateForm:FormGroup;
   constructor(
     private formBuilder:FormBuilder,
@@ -24,36 +25,38 @@ export class BrandUpdateComponent implements OnInit {
     this.activatedRoute.params.subscribe((params) => {
       if (params['id']) {
         this.getByBrandId(params['id']);
+
     }
-    });
     this.getBrand();
+    this.createBrandUpdateForm();
+    });
 
   };
 
 
   getBrand() {
     this.brandService.getBrands().subscribe((response) => {
-      this.brand = response.data[0];
+      this.brands = response.data;
     });
   }
 
   getByBrandId(id:number){
     this.brandService.getById(id).subscribe(response=>{
-
-      this.createBrandUpdateForm();
+      this.brand = response.data;
+      console.log(response.data);
     })
   }
 
   createBrandUpdateForm(){
     this.brandUpdateForm = this.formBuilder.group({
-      id: [this.brand.id,Validators.required],
-      name:[this.brand.name,Validators.required],
+      name:["",Validators.required],
     })
   }
 
   update(){
     if(this.brandUpdateForm.valid){
       let brandModel:Brand = Object.assign({},this.brandUpdateForm.getRawValue());
+      brandModel.id = this.brand.id;
       this.brandService.update(brandModel).subscribe(response=>{
         this.toastrService.success(response.message,"BASARILI"
       )},responseError=>{
