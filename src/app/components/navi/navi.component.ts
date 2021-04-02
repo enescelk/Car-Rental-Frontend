@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Customer } from 'src/app/models/customer';
 import { AuthService } from 'src/app/services/auth.service';
 import { CustomerService } from 'src/app/services/customer.service';
+import { LocalStorageService } from 'src/app/services/local-storage.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-navi',
@@ -10,30 +13,28 @@ import { CustomerService } from 'src/app/services/customer.service';
 })
 export class NaviComponent implements OnInit {
 
-  userLogged:boolean;
-  userName:string;
-  customers : Customer[] = [];
-  customer: Customer;
-  constructor(private authService:AuthService,private customerService:CustomerService) { }
+  constructor(private authService:AuthService,
+    private customerService:CustomerService,
+    private toastrService: ToastrService,
+    private localStorageService:LocalStorageService,
+    private router: Router) { }
 
   ngOnInit(): void {
-    this.checkToLogin();
   }
 
   checkToLogin(){
-    if(this.authService.isAuthenticated()){
-      return true;
-    }
-    else{
-      return false;
-    }
+    return this.authService.isAuthenticated()
   }
 
-  getCustomerById(id:number){
-    this.customerService.getById(id).subscribe(response=>{
-      console.log(response)
-      this.customer = response.data[0];
-    });
+  logOut(){
+    this.authService.logOut();
+    this.localStorageService.removeCurrentCustomer();
+    this.toastrService.success('Çıkış yapıldı', 'Başarılı');
+
+    return this.router.navigate(['/login']);
   }
 
+  getCurrentCustomer(): Customer{
+    return this.localStorageService.getCurrentCustomer();
+  }
 }
