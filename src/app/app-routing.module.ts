@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { BrandAddComponent } from './components/add-components/brand-add/brand-add.component';
 import { CarAddComponent } from './components/add-components/car-add/car-add.component';
 import { ColorAddComponent } from './components/add-components/color-add/color-add.component';
-import { CarDetailComponent } from './components/car-detail/car-detail.component';
+import { CarDetailComponent } from './components/car/car-detail/car-detail.component';
 import { CarComponent } from './components/car/car.component';
 import { LoginComponent } from './components/auth/login/login.component';
 import { PaymentComponent } from './components/payment/payment.component';

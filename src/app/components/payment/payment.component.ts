@@ -60,7 +60,6 @@ export class PaymentComponent implements OnInit {
 
   pay(){
     this.paymentService.pay(this.rental,this.amountOfPayment).subscribe(response => {
-      this.router.navigate(['/cars']);
       this.toastrService.success(response.message.toString(), "İşlem Başarılı");
     })
   }
