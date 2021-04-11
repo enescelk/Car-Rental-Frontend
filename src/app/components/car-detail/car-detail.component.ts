@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Car } from 'src/app/models/car';
-import { CarDetailAndImagesDto } from 'src/app/models/carDetailAndImagesDto';
+import { carDetailAndImagesDto } from 'src/app/models/CarDetailAndImagesDto';
 import { CarImage } from 'src/app/models/carImage';
 import { CarDetailService } from 'src/app/services/car-detail.service';
 import { CarImageService } from 'src/app/services/car-image.service';
@@ -17,7 +17,7 @@ export class CarDetailComponent implements OnInit {
 
   cars: Car;
   carImages:CarImage[] = [];
-  carDetail:CarDetailAndImagesDto;
+  carDetail:carDetailAndImagesDto;
   dataLoaded = false;
   imageBasePath = environment.baseUrl;
   constructor(private carDetailService:CarDetailService,

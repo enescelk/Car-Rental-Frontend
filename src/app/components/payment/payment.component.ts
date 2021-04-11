@@ -1,7 +1,6 @@
 import { Component, OnInit, ɵbypassSanitizationTrustResourceUrl } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { CarDetailAndImagesDto } from 'src/app/models/carDetailAndImagesDto';
 import { CreditCard } from 'src/app/models/creditCard';
 import { Rental } from 'src/app/models/rental';
 import { CarDetailService } from 'src/app/services/car-detail.service';
@@ -11,6 +10,7 @@ import { FormGroup, FormControl, FormBuilder, Validators } from "@angular/forms"
 import { UserService } from 'src/app/services/user.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { RentalService } from 'src/app/services/rental.service';
+import { carDetailAndImagesDto } from 'src/app/models/CarDetailAndImagesDto';
 
 @Component({
   selector: 'app-payment',
@@ -19,7 +19,7 @@ import { RentalService } from 'src/app/services/rental.service';
 })
 export class PaymentComponent implements OnInit {
   rental: Rental;
-  carDetail: CarDetailAndImagesDto;
+  carDetail: carDetailAndImagesDto;
   amountOfPayment: number = 0;
   dataLoaded: boolean = false;
   creditCardAddForm: FormGroup;
@@ -116,7 +116,6 @@ export class PaymentComponent implements OnInit {
 
   getCardsByCustomer() {
     this.creditCardService.getCardsByUserId(this.authService.getUserId()).subscribe(response => {
-      console.log(response.data);
       this.creditCards = response.data;
     })
   }
@@ -129,7 +128,7 @@ export class PaymentComponent implements OnInit {
     this.rentalService.add(rental).subscribe(response => {
       this.toastrService.success(response.message, "BASARILI !");
     }, responseError => {
-      console.log(responseError);
+      this.toastrService.error(responseError.error,"HATA !")
     });
   }
 

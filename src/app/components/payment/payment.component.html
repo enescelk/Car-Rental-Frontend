@@ -33,7 +33,7 @@
 
 <div class="cards" style="margin-bottom: 10px" *ngIf="creditCards">
   <div class="accordion" id="accordionExample">
-    <div class="accordion-item" style="background-color: black">
+    <div class="accordion-item" style="background-color: rgb(255, 255, 255)">
       <h2 class="accordion-header" id="headingOne">
         <button
           class="accordion-button"
@@ -53,11 +53,10 @@
         data-bs-parent="#accordionExample"
       >
         <div class="accordion-body" style="background-color: #3f3f3f">
-          <div class="row">
-            <ul class="list-group" style="margin-left:20px;">
+          <div class="row" *ngFor="let card of creditCards">
+            <ul class="list-group" style="margin-left:20px;" >
               <li
                 (click)="setCurrentCard(card)"
-                *ngFor="let card of creditCards"
                 class="list-group-item col-md-2"
               >
                 <i class="fas fa-credit-card"></i> {{ card.cardNumber }}
@@ -140,9 +139,9 @@
 
   </div>
 </form>
-<div class="form-check form-switch">
+<div class="form-check form-switch" style="padding-left: 27em;">
   <input class="form-check-input" type="checkbox" id="saveCart" [(ngModel)]="saveCart" checked>
-  <label class="form-check-label" for="saveCart">cart</label>
+  <label class="form-check-label" for="saveCart">Kartimi Kayit Et</label>
 </div>
   <div class="card-footer">
     <div class="row">

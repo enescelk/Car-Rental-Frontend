@@ -11,13 +11,14 @@
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown
+            Ekleme Islemleri
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
+            <li><a class="dropdown-item" routerLink="/colors/add">Renk Ekle</a></li>
+            <li><hr></li>
+            <li><a class="dropdown-item" routerLink="/cars/add">Araba Ekle</a></li>
+            <li><hr></li>
+            <li><a class="dropdown-item" routerLink="/brands/add">Marka Ekle</a></li>
           </ul>
         </li>
         <li class="nav-item">
@@ -28,7 +29,7 @@
         <li  class="nav-item"><button type="button" routerLink="/login" class="btn btn-primary" style="margin-right: 5px;">Giris Yap</button></li>
         <li  class="nav-item"><button type="button" routerLink="/register" class="btn btn-primary">Kayit Ol</button></li>
       </ul>
-      <div *ngIf="getCurrentCustomer() && checkToLogin()" class="dropdown">
+      <div *ngIf="getCurrentCustomer() && checkToLogin()" class="dropdown" style="padding-right: 3em;">
         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
           {{ getCurrentCustomer().firstName }} {{ getCurrentCustomer().lastName }}
         </button>

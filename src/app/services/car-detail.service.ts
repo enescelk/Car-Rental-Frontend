@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { CarDetailAndImagesDto } from '../models/carDetailAndImagesDto';
+import { carDetailAndImagesDto } from '../models/CarDetailAndImagesDto';
 import { ItemResponseModel } from '../models/itemResponseModel';
 
 @Injectable({
@@ -12,8 +12,8 @@ export class CarDetailService {
 
   constructor(private httpClient:HttpClient) { }
 
-  getCarDetail(carId:number):Observable<ItemResponseModel<CarDetailAndImagesDto>>{
+  getCarDetail(carId:number):Observable<ItemResponseModel<carDetailAndImagesDto>>{
     let newPath = environment.apiUrl + 'cars/getcardetail?carId='+carId;
-    return this.httpClient.get<ItemResponseModel<CarDetailAndImagesDto>>(newPath);
+    return this.httpClient.get<ItemResponseModel<carDetailAndImagesDto>>(newPath);
   }
 }

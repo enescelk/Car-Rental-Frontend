@@ -16,9 +16,10 @@ import { RegisterComponent } from './components/auth/register/register.component
 import { RegisterGuard } from './guards/register.guard';
 import { ProfileComponent } from './components/auth/profile/profile.component';
 import { CreditCartComponent } from './components/credit-cart/credit-cart.component';
+import { FilterComponent } from './components/filter/filter.component';
 
 const routes: Routes = [
-  {path:"", component:CarComponent},
+  {path:"",component:CarComponent,},
   {path:"cars", component:CarComponent},
   {path:"cars/brand/:brandId", component:CarComponent},
   {path:"cars/GetCarsByColorId/:colorId", component:CarComponent},
