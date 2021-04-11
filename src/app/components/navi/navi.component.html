@@ -35,6 +35,8 @@
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
           <li><a class="dropdown-item" routerLink="/cars" (click)="logOut()">Cikis</a></li>
           <li><a class="dropdown-item" routerLink="/profile">Profil</a> </li>
+          <li><a class="dropdown-item" routerLink="/credit-cart">Kayitli Kartlarim</a></li>
+          <li><a class="dropdown-item">{{ getCurrentCustomer().findexPoint }} Findex Puanı</a></li>
         </ul>
       </div>
     </div>

@@ -16,6 +16,7 @@ export class LoginComponent implements OnInit {
 
   loginForm:FormGroup;
   customer: Customer;
+
   constructor(private formBuilder:FormBuilder,
     private authService:AuthService,
     private toastrService:ToastrService,
@@ -38,7 +39,6 @@ export class LoginComponent implements OnInit {
     this.customerService.getCustomer().subscribe(response=>{
       let currentCustomer = response.data.filter(c => c.email == email)[0];
       this.localStorageService.setCurrentCustomer(currentCustomer);
-      console.log(response.data);
     })
   }
 

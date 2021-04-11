@@ -14,11 +14,12 @@ import { CustomerService } from 'src/app/services/customer.service';
 export class RentalComponent implements OnInit {
 
   customers:Customer[];
-  customerId:Number;
+  customerId: number;
   rentDate:Date;
   returnDate:Date;
   dataLoaded = false;
   @Input() car:Car;
+
   constructor(
     private router:Router,
     private customerService:CustomerService,
@@ -26,19 +27,16 @@ export class RentalComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCustomer();
-    console.log(this.car);
   }
 
   getCustomer(){
     this.customerService.getCustomer().subscribe(response => {
       this.customers = response.data;
-      //this.dataLoaded = true;
     })
   }
 
   getRentMinDate(){
     var today  = new Date();
-    //min="1980-01-01"
     today.setDate(today.getDate() + 1);
     return today.toISOString().slice(0,10)
   }
@@ -50,12 +48,14 @@ export class RentalComponent implements OnInit {
   }
 
   createRental(){
+
     let MyRental:Rental = {
       rentDate: this.rentDate,
       returnDate: this.returnDate,
       carId : this.car.id,
-      customerId: parseInt(this.customerId.toString())
+      customerId: Number(this.customerId)
     }
+
     this.router.navigate(['/payment/', JSON.stringify(MyRental)]);
     this.toastrService.info("Ödeme sayfasına yönlendiriliyorsunuz...", "Ödeme İşlemleri");
     /*

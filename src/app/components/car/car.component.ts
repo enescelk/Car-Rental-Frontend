@@ -38,6 +38,7 @@ export class CarComponent implements OnInit {
   getCars() {
     this.carService.getCars().subscribe((response) => {
       this.cars = response.data;
+      console.log(response.data);
       this.dataLoaded = true;
     });
   }
@@ -45,6 +46,7 @@ export class CarComponent implements OnInit {
   getCarsByBrand(brandId: number) {
     this.carService.getCarsByBrandId(brandId).subscribe((response) => {
       this.cars = response.data;
+      console.log(response.data);
       this.dataLoaded = true;
     });
   }

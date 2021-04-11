@@ -63,6 +63,7 @@ export class ProfileComponent implements OnInit {
       return this.router.navigate(['/profile']);
     }, responseError => {
       console.log(responseError)
+      this.toastrService.error(responseError.error,"HATA !");
     })
 
     return true;

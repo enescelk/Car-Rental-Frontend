@@ -15,9 +15,12 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-  userName:string;
-  helper = new JwtHelperService();
-  constructor(private httpClient:HttpClient,private localStorageService:LocalStorageService,private toastrService:ToastrService) { }
+  userId:number;
+  jwtHelper: JwtHelperService = new JwtHelperService();
+  constructor(
+    private httpClient:HttpClient,
+    private localStorageService:LocalStorageService,
+    private toastrService:ToastrService,) {this.setId()}
 
   login(loginModel:LoginModel){
     let newPath = environment.apiUrl + "auth/login"
@@ -48,19 +51,23 @@ export class AuthService {
     this.toastrService.show("Cikis Yapildi","BASARILI !")
   }
 
-  setUserName(){
-    var decoded = this.getDecodedToken()
-    var propUserName = Object.keys(decoded).filter(x => x.endsWith("/name"))[0];
-    this.userName = decoded[propUserName];
+  setId(){
+    if(localStorage.getItem("token")){
+      var decoded = this.jwtHelper.decodeToken(localStorage.getItem("token")!);
+      var propUserId = Object.keys(decoded).filter(x => x.endsWith("/nameidentifier"))[0];
+      this.userId = Number(decoded[propUserId]);
+    }
+
   }
 
-  getUserName():string{
-    return this.userName;
+  getUserId():number{
+    console.log(this.userId);
+    return this.userId;
   }
 
   getDecodedToken(){
     try{
-      return this.helper.decodeToken(this.localStorageService.getToken()!);
+      return this.jwtHelper.decodeToken(this.localStorageService.getToken()!);
     }
     catch(Error){
         return null;

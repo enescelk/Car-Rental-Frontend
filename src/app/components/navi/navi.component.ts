@@ -5,6 +5,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { CustomerService } from 'src/app/services/customer.service';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { ToastrService } from 'ngx-toastr';
+import { CreditCard } from 'src/app/models/creditCard';
 
 @Component({
   selector: 'app-navi',
@@ -12,6 +13,7 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./navi.component.css']
 })
 export class NaviComponent implements OnInit {
+
 
   constructor(private authService:AuthService,
     private customerService:CustomerService,

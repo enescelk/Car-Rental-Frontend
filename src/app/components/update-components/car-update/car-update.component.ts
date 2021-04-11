@@ -65,6 +65,7 @@ export class CarUpdateComponent implements OnInit {
       name: [this.carDetail.car.name, Validators.required],
       brandId: [this.carDetail.car.brandId, Validators.required],
       colorId: [this.carDetail.car.colorId, Validators.required],
+      minFindeks:[this.carDetail.car.minFindeks,Validators.required],
       dailyPrice: [this.carDetail.car.dailyPrice, Validators.required],
       modelYear: [this.carDetail.car.modelYear, Validators.required],
       description: [this.carDetail.car.description, Validators.required],
@@ -73,6 +74,7 @@ export class CarUpdateComponent implements OnInit {
 
   getCars() {
     this.carService.getCars().subscribe((response) => {
+      console.log(response.data);
       this.cars = response.data;
     });
   }
