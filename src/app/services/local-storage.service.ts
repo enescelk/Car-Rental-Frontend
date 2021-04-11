@@ -38,7 +38,7 @@ export class LocalStorageService {
   }
 
   getCurrentCustomer(): Customer {
-    return JSON.parse(localStorage.getItem(this.currentCustomer)!);
+    return JSON.parse(localStorage.getItem(this.currentCustomer));
   }
 
   removeCurrentCustomer() {
