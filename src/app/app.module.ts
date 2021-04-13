@@ -32,6 +32,7 @@ import { RegisterComponent } from './components/auth/register/register.component
 import { ToastrModule } from 'ngx-toastr';
 import { ProfileComponent } from './components/auth/profile/profile.component';
 import { CreditCartComponent } from './components/credit-cart/credit-cart.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 
@@ -68,9 +69,11 @@ import { CreditCartComponent } from './components/credit-cart/credit-cart.compon
     FormsModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
+    FontAwesomeModule,
     ToastrModule.forRoot({
       positionClass : "toast-bottom-right"
-    })
+    }),
+
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass:AuthInterceptor, multi:true}
