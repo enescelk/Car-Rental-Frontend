@@ -6,7 +6,7 @@ import { CustomerService } from 'src/app/services/customer.service';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { ToastrService } from 'ngx-toastr';
 import { CreditCard } from 'src/app/models/creditCard';
-import { faCar } from '@fortawesome/free-solid-svg-icons';
+import { faCar,faUser,faCreditCard,faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-navi',
@@ -16,6 +16,9 @@ import { faCar } from '@fortawesome/free-solid-svg-icons';
 export class NaviComponent implements OnInit {
 
   faCar = faCar;
+  faUser = faUser;
+  faCreditCard = faCreditCard;
+  faSignOutAlt = faSignOutAlt
   constructor(
     private authService:AuthService,
     private toastrService: ToastrService,
