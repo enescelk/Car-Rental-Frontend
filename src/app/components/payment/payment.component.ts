@@ -40,10 +40,8 @@ export class PaymentComponent implements OnInit {
     private carDetailService: CarDetailService,
     private router: Router,
     private toastrService: ToastrService,
-    private paymentService: PaymentService,
     private creditCardService: CreditCardService,
     private formBuild: FormBuilder,
-    private userService: UserService,
     private authService: AuthService,
     private rentalService: RentalService) { }
 
