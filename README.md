@@ -6,7 +6,7 @@ Kurumsal mimari yapım ekranı Clean Code ile SOLID kuralları dahilinde oluştu
 
 ## Projeden Görüntüler
 
-|[](https://media.giphy.com/media/i0DTiz97D6HOMgqmqm/giphy.gif)
+![RESIMLER](https://media.giphy.com/media/i0DTiz97D6HOMgqmqm/giphy.gif)
 
 # ReCapProject
 
