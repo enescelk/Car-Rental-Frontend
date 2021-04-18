@@ -14,7 +14,7 @@
       <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
           <div class="carousel-inner">
             <div *ngFor="let image of carDetail.carImages let i = index" [ngClass]="getSliderClassName(i)">
-              <img src="{{imageBasePath}}/{{image.imagePath}}" class="d-block w-100" width="900" height="500" alt="...">
+              <img src="{{imageBasePath}}/{{image.imagePath}}" class="d-block w-100" width="900" height="700" alt="...">
             </div>
           </div>
           <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"  data-bs-slide="prev">
