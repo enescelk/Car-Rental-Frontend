@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Filters } from 'src/app/models/filterts';
+import { faFilter, faBan} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-filter',
@@ -8,6 +9,9 @@ import { Filters } from 'src/app/models/filterts';
   styleUrls: ['./filter.component.css']
 })
 export class FilterComponent implements OnInit {
+
+  faFilter = faFilter;
+  faBan = faBan;
 
   constructor(private router:Router, private activatedRoute:ActivatedRoute) { }
 

@@ -7,7 +7,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <a class="nav-link active" aria-current="page" href="#">Ana Sayfa</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -21,13 +21,10 @@
             <li><a class="dropdown-item" routerLink="/brands/add">Marka Ekle</a></li>
           </ul>
         </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-        </li>
       </ul>
       <ul *ngIf="!checkToLogin()" class="nav navbar-nav navbar-dark">
-        <li  class="nav-item"><button type="button" routerLink="/login" class="btn btn-primary" style="margin-right: 5px;">Giris Yap</button></li>
-        <li  class="nav-item"><button type="button" routerLink="/register" class="btn btn-primary">Kayit Ol</button></li>
+        <li  class="nav-item"><button type="button" routerLink="/login" class="btn btn-primary" style="margin-right: 5px;"><fa-icon [icon]="faSignInAlt"></fa-icon> Giris Yap</button></li>
+        <li  class="nav-item"><button type="button" routerLink="/register" class="btn btn-primary"><fa-icon [icon]="faUser"></fa-icon> Kayit Ol</button></li>
       </ul>
       <div *ngIf="getCurrentCustomer() && checkToLogin()" class="dropdown" style="padding-right: 3em;">
         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
